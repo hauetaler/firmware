@@ -157,6 +157,17 @@ initial_freifunk_setup()
 	uci set network.freifunk6.proto="dhcpv6"
 	uci set network.freifunk6.reqaddress="none" #slaac only
 	uci set network.freifunk6.reqprefix="no" #disable dhcpv6 /128 request
+
+	uci delete -q network.nat64
+	uci set network.nat64=interface
+	uci set network.nat64.ip6addr=fe80::1
+	uci set network.nat64.ip6prefix=fdef:17a0:ffb1:1337::/96
+	uci set network.nat64.proto=siit
+
+	uci set network.freifunk_default=route
+	uci set network.freifunk_default.interface=nat64
+	uci set network.freifunk_default.netmask=0.0.0.0
+	uci set network.freifunk_default.target=0.0.0.0
 }
 
 initial_wan_setup()
