@@ -105,6 +105,13 @@ config include
 #
 
 config zone
+	option name		nat64
+	option network		nat64
+	option input		ACCEPT
+	option output		ACCEPT
+	option forward		REJECT
+
+config zone
 	option name		freifunk
 	list network		freifunk
 	list network		freifunk6
@@ -117,6 +124,13 @@ config forwarding
 	option src		lan
 	option dest 		freifunk
 
+config forwarding
+	option src		freifunk
+	option dest		nat64
+
+config forwarding
+	option src		nat64
+	option dest		freifunk
 
 ###
 ### Example 1: forward port 20-21 to ftp-server on my lan network
