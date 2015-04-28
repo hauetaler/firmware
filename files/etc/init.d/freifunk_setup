@@ -177,7 +177,7 @@ initial_freifunk_setup()
 
 	uci set network.freifunk_lan6=route6
 	uci set network.freifunk_lan6.interface=nat64
-	uci set network-freifunk_lan6.target=fdef:17a0:ffb1:1337::c0a8:8400/120
+	uci set network.freifunk_lan6.target=fdef:17a0:ffb1:1337::c0a8:8400/120
 
 	uci set network.freifunk_lookup=rule
 	uci set network.freifunk_lookup.in=freifunk
